@@ -9,7 +9,8 @@ namespace Coursera
 	{
 		static void Main(string[] args)
 		{
-			DijkstraTest.Test();
+			//DijkstraTest.Test();
+			MedianMaintenanceTest.Test();
 		}			
 	}
 }

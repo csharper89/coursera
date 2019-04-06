@@ -78,7 +78,14 @@ namespace Coursera
 
 		public void Add(T item)
 		{
-			_items.Add(item);
+			if (_items.Count == _actualSize)
+			{
+				_items.Add(item);
+			}
+			else
+			{
+				_items[_actualSize] = item;
+			}
 			_actualSize++;
 			HeapifyUp();
 		}
