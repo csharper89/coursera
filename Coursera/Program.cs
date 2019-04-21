@@ -11,7 +11,7 @@ namespace Coursera
 		{
 			//DijkstraTest.Test();
 			//MedianMaintenanceTest.Test();
-			TwoSumTest.Test();
+			SchedulingTest.Test();
 		}			
 	}
 }

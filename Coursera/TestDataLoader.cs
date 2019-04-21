@@ -25,7 +25,11 @@ namespace Coursera
 					{
 						if (!string.IsNullOrEmpty(s))
 						{
-							result.Add(parser(s.Trim()));
+							var parsed = parser(s.Trim());
+							if (parsed != null)
+							{
+								result.Add(parsed);
+							}
 						}
 					}
 				}
