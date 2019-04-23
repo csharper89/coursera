@@ -8,13 +8,10 @@ namespace Coursera
 {
 	public class Dijkstra
 	{
-		private HashSet<VertexInfo> _graph;
-
 		private Heap<DijkstraVertexInfo> _heap;
 
 		public Dijkstra(HashSet<VertexInfo> graph)
 		{
-			_graph = graph;
 			_heap = new Heap<DijkstraVertexInfo>(false, graph.Count);
 
 			foreach (var vertex in graph)
@@ -58,7 +55,7 @@ namespace Coursera
 
 		private void UpdateConnectedVertex(DijkstraVertexInfo currentVertex, ConnectedVertex connected)
 		{
-			var corresponding = _heap.Items.FirstOrDefault(v => v.Vertex.Label == connected.Id);
+			var corresponding = _heap.Items.FirstOrDefault(v => v.Vertex.Label == connected.Label);
 			if (corresponding != null && (currentVertex.MinDistance + connected.Distance) < corresponding.MinDistance)
 			{
 				var updated = new DijkstraVertexInfo
@@ -145,7 +142,7 @@ namespace Coursera
 			for (var i = 0; i < path.Count - 1; i++)
 			{
 				var next = path[i + 1];
-				distance += path[i].Connected.First(c => c.Id == next.Label).Distance;
+				distance += path[i].Connected.First(c => c.Label == next.Label).Distance;
 			}
 			return distance;
 		}
@@ -167,7 +164,7 @@ namespace Coursera
 							var edgeParts = p.Split(',');
 							return new ConnectedVertex
 							{
-								Id = int.Parse(edgeParts[0]),
+								Label = int.Parse(edgeParts[0]),
 								Distance = int.Parse(edgeParts[1])
 							};
 						}).ToList()

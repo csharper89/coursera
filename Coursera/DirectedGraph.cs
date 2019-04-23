@@ -72,7 +72,7 @@ namespace Coursera
 					var connected = ver.Connected.First(v => !v.IsVisited);
 					connected.IsVisited = true;
 					stack1.Push(ver);
-					var temp = new VertexInfo { Label = connected.Id };
+					var temp = new VertexInfo { Label = connected.Label };
 					if (graph.Contains(temp))
 					{
 						graph.TryGetValue(temp, out temp);
@@ -126,7 +126,7 @@ namespace Coursera
 
 						var connected = new ConnectedVertex
 						{
-							Id = reversed ? int.Parse(parts[0]) : int.Parse(parts[1]),
+							Label = reversed ? int.Parse(parts[0]) : int.Parse(parts[1]),
 							IsVisited = false
 						};
 						info.Connected.Add(connected);
@@ -145,7 +145,7 @@ namespace Coursera
 
 	public class ConnectedVertex
 	{
-		public int Id { get; set; }
+		public int Label { get; set; }
 
 		public bool IsVisited { get; set; }
 
@@ -173,7 +173,7 @@ namespace Coursera
 
 		public override string ToString()
 		{
-			return $"{Label} -> {string.Join(", ", Connected.Select(c => $"{c.Id}({c.Distance})"))}";
+			return $"{Label} -> {string.Join(", ", Connected.Select(c => $"{c.Label}({c.Distance})"))}";
 		}
 	}
 }
